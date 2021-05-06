@@ -16,6 +16,7 @@ export default {
 div {
   height: 70px;
   width: 100%;
+  background-color: #303543e0;
   background-color: #222326;
   display: flex;
   align-content: flex-start;
