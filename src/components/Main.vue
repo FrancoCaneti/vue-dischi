@@ -1,15 +1,22 @@
 <template>
   <main>
     <div class="album">
-      <h1>ok</h1>
+      <div>
+        <Copertine />
+      </div>
     </div>
   </main>
 </template>
 
 <script>
 import axios from "axios";
+import Copertine from "@/components/Copertine.vue";
 export default {
   name: "Main",
+  components: {
+    Copertine,
+  },
+
   data() {
     return {
       apiURL: "https://flynn.boolean.careers/exercises/api/array/music",
@@ -22,7 +29,16 @@ export default {
   },
   methods: {
     getDisco() {
-      axios;
+      axios
+        .get(this.apiURL)
+        .then((res) => {
+          console.log(res.data);
+          this.discoList = res.data;
+          this.loading = false;
+        })
+        .catch((err) => {
+          console.log("Error", err);
+        });
     },
   },
 };
@@ -35,5 +51,8 @@ main {
   width: 100%;
   height: 651px;
   background-color: #151a28e3;
+}
+.album {
+  display: flex;
 }
 </style>
